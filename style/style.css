@@ -1,0 +1,102 @@
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	background: url('background.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	color: white;
+	text-align: center; /* !!! */
+}
+
+a {
+	color: white;
+	opacity: 0.5;
+}
+
+#content {
+	height: calc(100% - 50px);
+	overflow: hidden;
+}
+
+#centered {
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -150px; /* half height and width */
+}
+
+#centered a {
+	opacity: 0.5; 
+	width: 32px; 
+	height: 32px; 
+	display: inline-block; 
+	margin: 10px 10px;
+}
+
+#centered a:hover {
+	opacity: 1; 
+	-webkit-transition: all 0.2s ease-in-out;  
+}
+
+#centered a.resume {
+	background: transparent url('icon-resume-256.png') center center no-repeat; 
+	background-size: 32px 32px;
+}
+
+#centered a.github {
+	background: transparent url('icon-github-32.png') center center no-repeat; 
+	background-size: 32px 32px;
+}
+
+#centered a.linkedin {
+	background: transparent url('icon-linkedin-128.png') center center no-repeat; 
+	background-size: 32px 32px;
+}
+
+footer {
+	font-size: 80%;
+}
+
+a.lock {
+	float: right;
+	opacity: 0.2; 
+	width: 16px; 
+	height: 16px; 
+	display: inline-block; 
+	margin: 10px 10px;
+	background: transparent url('private-256.png') center center no-repeat; 
+	background-size: 16px 16px;
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+	html {	
+		background: url('background2.jpg') no-repeat center center fixed; 
+		background-color: black;
+	}
+
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	
+		color: white;
+		text-align: center; /* !!! */
+	}
+
+	a.lock {
+		visibility: hidden;
+	}
+}
