@@ -3,7 +3,7 @@ html {
 	margin: 0;
 	padding: 0;
 	
-	background: url('background.jpg') no-repeat center center fixed; 
+	background: url('../img/background.jpg') no-repeat center center fixed; 
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
@@ -52,17 +52,17 @@ a {
 }
 
 #centered a.resume {
-	background: transparent url('icon-resume-256.png') center center no-repeat; 
+	background: transparent url('../img/icon-resume-256.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
 #centered a.github {
-	background: transparent url('icon-github-32.png') center center no-repeat; 
+	background: transparent url('../img/icon-github-32.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
 #centered a.linkedin {
-	background: transparent url('icon-linkedin-128.png') center center no-repeat; 
+	background: transparent url('../img/icon-linkedin-128.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
