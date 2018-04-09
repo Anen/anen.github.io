@@ -2,10 +2,10 @@ html {
 	height: 100%;
 	
 	background: url('../img/background.jpg') no-repeat center center fixed; 
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 body {
@@ -13,15 +13,15 @@ body {
 }
 
 .flex-container {
-    height: calc(100% - 30px);
+	height: calc(100% - 30px);
     
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .flex-item {
-    text-align: center;
+	text-align: center;
 }
 
 a {
