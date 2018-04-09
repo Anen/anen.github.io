@@ -2,36 +2,22 @@
 	font-family: Segoe UI, Trebuchet MS, sans-serif;
 	text-decoration: none;
 	color: white;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	font-size: medium;
 }
 
-html {                
-	height: 100%;              /* Prend toute la place disponible */
-	margin: 0;
-	padding: 0;
+html {                      
 	background-image: url('../img/minecraft-horse-0.8.jpg');
 	background-repeat: no-repeat;         
 	background-position: center center;
-	
 }
 
-/* 4 Column settings */
 .columns {
-	float: left;
-	position: relative;	       /* This fixes the IE7 overflow hidden bug */
-	clear: both;
-	overflow: hidden;		       /* This chops off any overhanging divs */
-	width: 100%;			         /* Width of whole page */
-	
+	display: flex;
 }
 
 .column {
-	float: left;
-	position: relative;
-	overflow: hidden;
-	padding: 0% 1%;             /* Laisser 1% a gauche et a droite de la colonne*/
-	width: 23%;                 /* (1% + 23% + 1%) * 4 = 100% */
+	flex: 1;
+	padding: 0% 1%;           
 }
 
 .column p {
@@ -45,14 +31,13 @@ html {
 }
 
 .column a {
-  padding: 5px;
-  line-height: 200%;
+  	padding: 5px;
+  	line-height: 200%;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
 }
 
-                             /* Adds effects for hover of links */
 .column a:hover {
 	text-decoration: underline;
-
 }
 
 .column img {

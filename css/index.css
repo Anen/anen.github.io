@@ -1,7 +1,5 @@
 html {
 	height: 100%;
-	margin: 0;
-	padding: 0;
 	
 	background: url('../img/background.jpg') no-repeat center center fixed; 
    -webkit-background-size: cover;
@@ -12,33 +10,25 @@ html {
 
 body {
 	height: 100%;
-	margin: 0;
-	padding: 0;
-	
-	color: white;
-	text-align: center; /* !!! */
+}
+
+.flex-container {
+    height: calc(100% - 30px);
+    
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item {
+    text-align: center;
 }
 
 a {
-	color: white;
-	opacity: 0.5;
-}
-
-#content {
-	height: calc(100% - 50px);
-	overflow: hidden;
-}
-
-#centered {
-	width: 300px;
-	height: 100px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin: -50px 0 0 -150px; /* half height and width */
-}
-
-#centered a {
 	opacity: 0.5; 
 	width: 32px; 
 	height: 32px; 
@@ -46,42 +36,28 @@ a {
 	margin: 10px 10px;
 }
 
-#centered a:hover {
+a:hover {
 	opacity: 1; 
 	-webkit-transition: all 0.2s ease-in-out;  
 }
 
-#centered a.resume {
+a.resume {
 	background: transparent url('../img/icon-resume-256.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
-#centered a.github {
-	background: transparent url('../img/icon-github-32.png') center center no-repeat; 
+a.linkedin {
+	background: transparent url('../img/icon-linkedin-128.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
-#centered a.linkedin {
-	background: transparent url('../img/icon-linkedin-128.png') center center no-repeat; 
+a.github {
+	background: transparent url('../img/icon-github-32.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
 footer {
 	font-size: 80%;
-}
-
-@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-	html {	
-		background: url('background2.jpg') no-repeat center center fixed; 
-		background-color: black;
-	}
-
-	body {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-	
-		color: white;
-		text-align: center; /* !!! */
-	}
+	color: white;
+	text-align: center;
 }
