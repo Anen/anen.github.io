@@ -10,11 +10,12 @@ html {
 
 body {
 	height: 100%;
+	margin: 0;
 }
 
 .flex-container {
-	height: calc(100% - 50px);
-    
+	height: calc(100% - 30px);
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
