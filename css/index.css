@@ -1,11 +1,10 @@
 html {
-	height: 100%;
-	
-	background: url('../img/background.jpg') no-repeat center center fixed; 
+	height: 100%;	
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background: radial-gradient(#2B2B2B, black);
 }
 
 body {
@@ -15,7 +14,6 @@ body {
 
 .flex-container {
 	height: calc(100% - 30px);
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -38,23 +36,14 @@ a:hover {
 	-webkit-transition: all 0.2s ease-in-out;  
 }
 
-a.resume {
-	background: transparent url('../img/icon-resume-256.png') center center no-repeat; 
-	background-size: 32px 32px;
-}
-
 a.linkedin {
 	background: transparent url('../img/icon-linkedin-128.png') center center no-repeat; 
 	background-size: 32px 32px;
 }
 
-a.github {
-	background: transparent url('../img/icon-github-32.png') center center no-repeat; 
-	background-size: 32px 32px;
-}
-
 footer {
 	font-size: 80%;
+	opacity: 0.5;
 	color: white;
 	text-align: center;
 }

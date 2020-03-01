@@ -8,19 +8,26 @@
 html {
 	background-image: url('../img/solar_eclipse_april_2014_antarctica_australia_indonesia_93004_1440x900.jpg');
 	background-repeat: no-repeat;
+	background-size: cover;
 	background-position: center center;
+}
+
+.weather {
+	display: block;
+	margin: 0 0 0 auto;
+	width: 75%;
 }
 
 .columns {
 	display: flex;
 }
 
-.column {
+.columns > div  {
 	flex: 1;
 	padding: 0% 1%;
 }
 
-.column p {
+.columns p {
 	margin: .8em 0 .4em 0;
 	padding: 5px;
 	color: white;
@@ -31,7 +38,7 @@ html {
 	background: linear-gradient(rgba(211, 211, 211, 0.3), black, transparent);
 }
 
-.column a {
+.columns a {
 	padding: 5px;
 	line-height: 200%;
 	text-shadow: -1px 1px 1px black;
@@ -39,12 +46,12 @@ html {
 	background-color: rgba(211, 211, 211, 0.2);
 }
 
-.column a:hover {
+.columns a:hover {
 	background-color: rgba(211, 211, 211, 0.5);
 	text-decoration: underline;
 }
 
-.column img {
+.columns img {
 	height: 16px;
 	width: 16px;
 }
