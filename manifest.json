@@ -9,5 +9,5 @@
     "newtab": "start.html"
   },
 
-  "content_security_policy": "script-src 'self' https://weatherwidget.io; object-src 'self'; default-src 'self' https://weatherwidget.io;"
+  "content_security_policy": "script-src 'self' https://weatherwidget.io; object-src 'self'; default-src 'self' https://weatherwidget.io; connect-src https://api.guildwars2.com;"
 }

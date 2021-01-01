@@ -39,7 +39,7 @@ html {
 }
 
 .columns a {
-	padding: 5px;
+	padding: 4px;
 	line-height: 200%;
 	text-shadow: -1px 1px 1px black;
 	border-radius: 5px;
@@ -56,13 +56,15 @@ html {
 	width: 16px;
 }
 
-/* Text Area */
-.history {
+#ResetFractals {
+	color: lightgray;
+	font-size: small;
+}
+
+#History {
+	color:lightgray;
 	padding: 0% 1%;
-	resize: none;
-	overflow-y: scroll;
 	font-size: x-small;
 	font-weight: normal;
-	background-color: transparent;
-	border: none;
 }
+
