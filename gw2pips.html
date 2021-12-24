@@ -217,11 +217,11 @@
 						ppt += 3;
 					}
 
-					// rank calculate (0 for first, then +1 for each additional)
-					ppt += $("option[name=rank]").index($("option[name=rank]:selected"));
+					// rank calculate (1 for first, then +1 for each additional)
+					ppt += 1 + $("option[name=rank]").index($("option[name=rank]:selected"));
 
 					// placement calculate (boxes are worth 1st=5,2nd=4,3rd=3)
-					ppt += 5 - $("input:radio[name=placement]").index($("input:radio[name=placement]:checked"));
+					ppt += 6 - $("input:radio[name=placement]").index($("input:radio[name=placement]:checked"));
 				}
 
 				function display() {
