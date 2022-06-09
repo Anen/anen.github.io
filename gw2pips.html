@@ -1,38 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head> 
+	<title>GW2 Pips calculator</title>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css" > 
+	<link rel="stylesheet" type="text/css" href="css/gw2pips.css">
 
-	<title>GW2 Pips calculator</title>
-
-	<style type="text/css">
-		html {
-			position: relative;
-			min-height: 100%;
-		}
-
-		.table>div {
-			display: table-row;
-		}
-
-		.table>div>div {
-			padding: 0 .5em;
-			display: table-cell;
-		}
-
-		#out {
-			margin-top: 20px;
-		}
-
-	</style>
-
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/gw2pips.js"></script>
 </head>
-<body class="" >
+<body class="bg-dark text-light" >
 	
 	<div class="container" id="pips">
 
@@ -42,7 +24,7 @@
 			<div class="col-sm">
 				<h3>Personal Rank</h3>
 				<div class="form-group">
-					<select class="form-control" id="sel1">
+					<select class="form-control bg-secondary text-light" id="sel1">
 					  <option name="rank" id="rank0">Rank 1-149 (Wood)</option>
 					  <option name="rank" id="rank1">Rank 150-619 (Bronze)</option>
 					  <option name="rank" id="rank2">Rank 620-1394 (Silver)</option>
@@ -79,10 +61,6 @@
 				</div>
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" id="outnumbered" /> Outnumbered</label>
-				</div>
-				<div class="checkbox">
-					<label>
 						<input type="checkbox" id="commander" /> Commander</label>
 				</div>
 				<div class="checkbox">
@@ -93,7 +71,7 @@
 
 			<div class="col-sm">
 				<h3>Results</h3>
-				<div id="out" class="card card-body bg-light table"></div>
+				<div id="out" class="card card-body table bg-secondary"></div>
 			</div>
 		</div>
 		<div class="row">
@@ -108,7 +86,7 @@
 							<td name="z1" data-pips=25 data-tickets=3>3</td>
 							<td name="z1" data-pips=25 data-tickets=8>4</td>
 							<td name="empty"></td>
-							<td name="empty" style="background-color:GhostWhite">
+							<td name="empty" class="bg-secondary">
 								<small><b>Legend:</b> Time remaining</br>Tickets completed</br>Pips completed</small>
 							</td>
 						</tr>
@@ -165,135 +143,6 @@
 				</table>
 			</div>
 		</div>
-
 	</div>
-
-	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		var ppt = 0;// pips per tick
-		var currentChest = 0;
-		
-		var user = {// NOTE: this object (which is saved to localStorage) is shared with mutiple pages
-			pipRank: 0
-		};
-		var localStorageName = "wvwtracker";
-
-		(function($) {
-
-			$.fn.pipCalc = function() {
-				$(this).on("change", "input", function(e) {
-					calcPPT();
-					display();
-					saveRank();
-					refreshTable();
-				});
-
-				$(this).on("change", "select", function(e) {
-					calcPPT();
-					display();
-					saveRank();
-					refreshTable();
-				});
-
-				$("td[name=z1]").click(function(){
-					currentChest = $("td[name=z1]").index(this);
-					refreshTable();
-				});
-
-				function calcPPT() {
-					ppt = 0;
-
-					if ($("#commitment").is(':checked')) {
-						ppt += 1;
-					}
-					if ($("#outnumbered").is(':checked')) {
-						ppt += 5;
-					}
-					if ($("#commander").is(':checked')) {
-						ppt += 1;
-					}
-					if ($("#public_commander").is(':checked')) {
-						ppt += 3;
-					}
-
-					// rank calculate (1 for first, then +1 for each additional)
-					ppt += 1 + $("option[name=rank]").index($("option[name=rank]:selected"));
-
-					// placement calculate (boxes are worth 1st=5,2nd=4,3rd=3)
-					ppt += 6 - $("input:radio[name=placement]").index($("input:radio[name=placement]:checked"));
-				}
-
-				function display() {
-					var out = "<div><div>Pips Per Tick:</div><div><b>" + ppt + "</b></div></div>";
-
-					$("#out").html(out);
-				}
-			
-				function loadRank() {
-					if (localStorage.getItem(localStorageName)) {
-						try {
-							user = JSON.parse(localStorage.getItem(localStorageName));
-
-							// if we have an existing rank saved, check the correct radio
-							if(user.pipRank){
-								$("option[name=rank]:eq(" + user.pipRank + ")").prop("selected", true);
-							}
-
-						} catch (e) {
-							console.log("Error loading/parsing JSON '" + localStorageName + "' stored in localStorage", e)
-						}
-					}
-				}
-
-				function saveRank() {
-					user.pipRank = $("option[name=rank]").index($("option[name=rank]:selected")),
-
-					localStorage.setItem(localStorageName, JSON.stringify(user));
-				}
-
-				function refreshTable(){
-					var allZ1 = $("td[name=z1]");
-
-					var pipsEarned = 0;
-					var ticketsEarned = 0; 
-					var cumulPipsFromChest= 0;
-
-					for(i=0; i <= allZ1.length; i++) {
-
-						pipsEarned += parseInt($(allZ1[i]).attr('data-pips'));
-						ticketsEarned += parseInt($(allZ1[i]).attr('data-tickets'));
-
-						var out = "";
-
-						if (i < currentChest) {
-							out += "~h~~m";
-							$(allZ1[i]).attr('class','table-success');
-						} else {
-							cumulPipsFromChest += parseInt($(allZ1[i]).attr('data-pips'));
-							var ticksRemaining = Math.ceil(cumulPipsFromChest / ppt);
-							out += Math.floor(ticksRemaining / 12) + "h" + ((ticksRemaining % 12) * 5) + "m";
-							$(allZ1[i]).attr('class','');
-						}
-
-						out += "</br><small>" + ticketsEarned + "/365 (" + Math.round(ticketsEarned / 365 * 100) + "%)</small>";
-						out += "</br><small>" + pipsEarned + "/1450 (" + Math.round(pipsEarned / 1450 * 100) + "%)</small>";
-
-						$(allZ1[i]).html(out);
-					}
-				}
-
-				// calculate on load
-				loadRank();
-				calcPPT();
-				display();
-				refreshTable();
-			};
-
-		}(jQuery));
-
-		$("#pips").pipCalc();
-	</script>
-
 </body>
 </html>

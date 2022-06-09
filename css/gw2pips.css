@@ -1,0 +1,17 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+.table>div {
+	display: table-row;
+}
+
+.table>div>div {
+	padding: 0 .5em;
+	display: table-cell;
+}
+
+#out {
+	margin-top: 20px;
+}

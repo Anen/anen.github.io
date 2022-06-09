@@ -51,48 +51,64 @@ window.onload = function() {
 	}(document,'script','weatherwidget-io-js');
 	
 	// Load fractal dailies
-	var xhr1 = new XMLHttpRequest();
-	xhr1.onreadystatechange = function() {
-		if (xhr1.readyState != 4 || xhr1.status != 200) 
-			return;
-				
-		var data1 = JSON.parse(xhr1.responseText);		
-		var achievIds = [];
-		data1.fractals.forEach(function (arrayItem) {
-			achievIds.push(arrayItem.id);
+	new Promise(function (resolve, reject) {
+		var xhr = new XMLHttpRequest();
+	  	xhr.onreadystatechange = (e) => {
+			if (xhr.readyState !== 4) {
+		  		return;
+			}
+  
+			if (xhr.status === 200) {
+		  		resolve(JSON.parse(xhr.responseText));
+			} else {
+		  		console.warn('request_error ' + xhr.status);
+			}
+	  	};
+  
+	  	xhr.open("GET", "https://api.guildwars2.com/v2/achievements/daily/tomorrow");
+	  	xhr.send();
+	}).then(function(result) { 
+		var achievIdArr = [];
+		result.fractals.forEach(function (arrayItem) {
+			achievIdArr.push(arrayItem.id);
 		});
 
-		// Get details of achiev.		
-		var xhr2 = new XMLHttpRequest();
-		xhr2.onreadystatechange = function() {
-			if (xhr2.readyState != 4 || xhr2.status != 200) 
-				return;
-
-			var data2 = JSON.parse(xhr2.responseText);
-			var fractalDetails = [];
-			var recFractals = [];
-			data2.forEach(function (arrayItem) {
+		new Promise(function (resolve, reject) {
+			var xhr2 = new XMLHttpRequest();
+			xhr2.onreadystatechange = (e) => {
+				if (xhr2.readyState !== 4) {
+					return;
+				}
+	
+				if (xhr2.status === 200) {
+					resolve(JSON.parse(xhr2.responseText));
+				} else {
+					console.warn('request_error ' + xhr2.status);
+				}
+			};
+	
+			xhr2.open("GET", "https://api.guildwars2.com/v2/achievements?lang=en&&ids=" + achievIdArr.join(), true);
+			xhr2.send();
+		}).then(function(result2) { 
+			var dailyArr = [];
+			var recsArr = [];
+			result2.forEach(function (arrayItem) {
 				if (arrayItem.name.includes('Recommended')) {
 					var recLevel = arrayItem.name.match(/\d+/)[0];
-					recFractals.push(recLevel);
+					recsArr.push(recLevel);
 				} else {
 					var detail = arrayItem.name.replace('Daily Tier 1 ', '');
 					detail = detail.replace('Daily Tier 2 ', '');
 					detail = detail.replace('Daily Tier 3 ', '');
 					detail = detail.replace('Daily Tier 4 ', '');
-					fractalDetails.push(detail);
+					dailyArr.push(detail);
 				}			
 			});
 
-			var UniqResetFractals = [...new Set(fractalDetails)];
-			document.getElementById("ResetFractals").innerHTML += UniqResetFractals.join(' - ') + ' - (' + recFractals.join(', ') + ')';	
-		};
+			// Removes duplicates from T1, T2, T3, and T4.
+			var dailySet = [...new Set(dailyArr)];
 
-		xhr2.open("GET", "https://api.guildwars2.com/v2/achievements?lang=en&&ids=" + achievIds.join(), true);
-		xhr2.send();	
-	};
-
-	xhr1.open("GET", "https://api.guildwars2.com/v2/achievements/daily/tomorrow", true);
-	xhr1.send();
-};
-
+			document.getElementById("ResetFractals").innerHTML += dailySet.join(' - ') + ' - (' + recsArr.join(', ') + ')'; 
+		}); // then(function(result2)
+	}); // then(function(result)
+}; // window.onload
