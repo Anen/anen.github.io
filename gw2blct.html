@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+	<title>GW2 Black Lion Claim Tickets</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" > 
+	<link rel="stylesheet" href="css/bootstrap.min.css" > 
+	<link rel="stylesheet" type="text/css" href="css/gw2blct.css">
+
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/gw2blct.js"></script>
+
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#dtBasicExample').DataTable({
+					paging: false
+				});
+			$('.dataTables_length').addClass('bs-select');
+		  });
+		
+	</script>
+</head>
+<body class="bg-dark text-light" >
+	
+	<div class="container" id="blct">
+
+		<h1>GW2 Black Lion Claim Tickets</h1>
+
+		<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+			<thead>
+			  <tr>
+				<th class="th-sm">Name
+				</th>
+				<th class="th-sm">Position
+				</th>
+				<th class="th-sm">Office
+				</th>
+				<th class="th-sm">Age
+				</th>
+				<th class="th-sm">Start date
+				</th>
+				<th class="th-sm">Salary
+				</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>Tiger Nixon</td>
+				<td>System Architect</td>
+				<td>Edinburgh</td>
+				<td>61</td>
+				<td>2011/04/25</td>
+				<td>$320,800</td>
+			  </tr>
+			  <tr>
+				<td>Garrett Winters</td>
+				<td>Accountant</td>
+				<td>Tokyo</td>
+				<td>63</td>
+				<td>2011/07/25</td>
+				<td>$170,750</td>
+			  </tr>
+			  <tr>
+				<td>Ashton Cox</td>
+				<td>Junior Technical Author</td>
+				<td>San Francisco</td>
+				<td>66</td>
+				<td>2009/01/12</td>
+				<td>$86,000</td>
+			  </tr>
+			  <tr>
+				<td>Cedric Kelly</td>
+				<td>Senior Javascript Developer</td>
+				<td>Edinburgh</td>
+				<td>22</td>
+				<td>2012/03/29</td>
+				<td>$433,060</td>
+			  </tr>
+			  <tr>
+				<td>Airi Satou</td>
+				<td>Accountant</td>
+				<td>Tokyo</td>
+				<td>33</td>
+				<td>2008/11/28</td>
+				<td>$162,700</td>
+			  </tr>
+			</tbody>
+			<tfoot>
+			  <tr>
+				<th>Name
+				</th>
+				<th>Position
+				</th>
+				<th>Office
+				</th>
+				<th>Age
+				</th>
+				<th>Start date
+				</th>
+				<th>Salary
+				</th>
+			  </tr>
+			</tfoot>
+		  </table>
+		</div>
+	</div>
+</body>
+</html>
